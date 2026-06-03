@@ -11,16 +11,14 @@ using namespace std;
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        if(nums.empty()) return 0;
         int n=nums.size();
-        if(n<=2) return n;
-        int slow=2;
-        for(int fast=2;fast<nums.size();++fast){
-            if(nums[fast]!=nums[slow-2]){
-                nums[slow++]=nums[fast];
-            }
+        if(n==1)return n;
+        int stack_size=2; //默认前两个元素保留
+        for(int i=2;i<n;i++){
+            if(nums[i]!= nums[stack_size-2])
+                nums[stack_size++]=nums[i];
         }
-        return slow;
+        return min(stack_size,n);
     }
 };
 // @lc code=end
