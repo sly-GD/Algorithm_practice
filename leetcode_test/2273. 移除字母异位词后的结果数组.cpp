@@ -13,7 +13,8 @@ public:
         string base="";
         for(auto& word:words){
             string s=word;
-            std::ranges::sort(s);
+            //std::ranges::sort(s);
+            std::sort(s.begin(), s.end());
             if(s!=base){
                 base=move(s); //浅拷贝
                 words[k++]=word;
